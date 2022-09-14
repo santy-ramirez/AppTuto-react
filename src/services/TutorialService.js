@@ -19,11 +19,16 @@ const updateTutorial= (id,data)=>{
   return http.put(`tutorial/${id}`,data)
 }
 
+const deleteTutorial = (id)=>{
+  return http.delete(`tutorial/${id}`)
+}
+
 const TutorialService = {
     create,
     geAll,
     findByTitle,
-    updateTutorial
+    updateTutorial,
+    deleteTutorial
 }
 
 export default TutorialService;

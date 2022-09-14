@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TutorialService from '../services/TutorialService';
+import NavBar from './NavBar';
 
 const initialState = {
     id: null,
@@ -38,38 +39,40 @@ function FormTutorial(props) {
 
     return (
         <div>
-            {submitted ? (
-                <div>
-                    <button
-                        onClick={newTutorial}
-                    >add</button>
-                </div>
-
-            ) : (
-                <div>
-                    <h1>add tutorial</h1>
-                    <div className='form-group'>
-                        <label>title</label>
-                        <input
-                            onChange={handleInputChange}
-                            className='form-control'
-                            type="text"
-                            name="title" />
-                        <label>description</label>
-                        <input
-                            onChange={handleInputChange}
-
-                            className='form-control'
-                            type="text"
-                            name="description" />
+            <NavBar />
+            <div className='container-sm' >
+                {submitted ? (
+                    <div>
                         <button
-                            onClick={saveTutorial}
-                            className='btn btn-success' >save</button>
+                            onClick={newTutorial}
+                        >Add other</button>
                     </div>
-                </div >
-            )
-            }
 
+                ) : (
+                    <div>
+                        <h1>add tutorial</h1>
+                        <div className='form-group'>
+                            <label>title</label>
+                            <input
+                                onChange={handleInputChange}
+                                className='form-control'
+                                type="text"
+                                name="title" />
+                            <label>description</label>
+                            <input
+                                onChange={handleInputChange}
+
+                                className='form-control'
+                                type="text"
+                                name="description" />
+                            <button
+                                onClick={saveTutorial}
+                                className='btn btn-success' >save</button>
+                        </div>
+                    </div >
+                )
+                }
+            </div>
         </div >
     );
 }
