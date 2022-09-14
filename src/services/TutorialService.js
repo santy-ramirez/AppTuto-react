@@ -14,10 +14,16 @@ const findByTitle = (title)=>{
   return http.get(`tutorial?query=${title}`)
 }
 
+const updateTutorial= (id,data)=>{
+  console.log(data)
+  return http.put(`tutorial/${id}`,data)
+}
+
 const TutorialService = {
     create,
     geAll,
-    findByTitle
+    findByTitle,
+    updateTutorial
 }
 
 export default TutorialService;

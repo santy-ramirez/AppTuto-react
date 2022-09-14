@@ -15,6 +15,7 @@ function FormTutorial(props) {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setTutorial({ ...tutorial, [name]: value })
+        console.log(value)
     }
     const saveTutorial = () => {
         var data = {
