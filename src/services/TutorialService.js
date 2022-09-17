@@ -1,6 +1,7 @@
 import http from "../http-common";
 
 const create = (data) =>{
+  console.log(data);
   return http.post("tutorial",data);
 
 }

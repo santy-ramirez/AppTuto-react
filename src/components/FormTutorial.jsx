@@ -21,7 +21,8 @@ function FormTutorial(props) {
     const saveTutorial = () => {
         var data = {
             title: tutorial.title,
-            description: tutorial.description
+            description: tutorial.description,
+            published: tutorial.published
         };
 
 

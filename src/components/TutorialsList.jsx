@@ -46,8 +46,29 @@ const TutorialsList = () => {
             });
     };
     const update = (t) => {
+        console.log(t.published);
         setTutorial(t)
         setShow(true)
+    }
+    const updatePublished = (t) => {
+        let arrarcopi = { ...t }
+        let publi = arrarcopi.published
+
+        if (publi) {
+            arrarcopi.published = false
+        } else {
+            arrarcopi.published = true
+
+        }
+
+        TutorialService.updateTutorial(arrarcopi.id, arrarcopi)
+            .then(res => {
+                setTutorial(res.data)
+                console.log(res)
+            })
+            .catch(err => console.error(err))
+
+
     }
 
     const updateTutorial = () => {
@@ -107,7 +128,8 @@ const TutorialsList = () => {
                             <th scope="col">id</th>
                             <th scope="col">title</th>
                             <th scope="col">description</th>
-                            <th scope="col">action</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,11 +140,18 @@ const TutorialsList = () => {
                                     <th scope="row">{t.id} </th>
                                     <td>{t.title} </td>
                                     <td>{t.description} </td>
-                                    <td><button className="btn btn-warning"
+                                    <td>{t.published ? "Published" : "Pending"} </td>
+                                    <td><button className="m-1 btn btn-warning"
                                         onClick={() => { update(t) }}  >
                                         update</button><button className="btn btn-danger "
                                             onClick={() => handleDelete(t.id)}
-                                        >Delete</button> </td>
+                                        >Delete</button>
+                                        <button
+                                            className="m-1  btn btn-outline-secondary"
+                                            onClick={() => { updatePublished(t) }}
+                                        >  {t.published ? "inpublished" : "published"}</button>
+
+                                    </td>
                                 </tr>
                             )
                         }
