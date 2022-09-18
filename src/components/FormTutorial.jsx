@@ -41,18 +41,18 @@ function FormTutorial(props) {
     return (
         <div>
             <NavBar />
-            <div className='container-sm' >
+            <div style={{ maxWidth: 600 }} className='mx-auto container-sm' >
                 {submitted ? (
                     <div>
-                        <button
+                        <button d-flex flex-row justify-content-center alig-items-center
                             onClick={newTutorial}
                         >Add other</button>
                     </div>
 
                 ) : (
                     <div>
-                        <h1>add tutorial</h1>
-                        <div className='form-group'>
+                        <h1>Add tutorial</h1>
+                        <div className=' form-group'>
                             <label>title</label>
                             <input
                                 onChange={handleInputChange}
@@ -68,7 +68,7 @@ function FormTutorial(props) {
                                 name="description" />
                             <button
                                 onClick={saveTutorial}
-                                className='btn btn-success' >save</button>
+                                className='m-2  btn btn-success' >save</button>
                         </div>
                     </div >
                 )

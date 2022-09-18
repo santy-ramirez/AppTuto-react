@@ -14,12 +14,14 @@ const TutorialsList = () => {
     const [tutorials, setTutorials] = useState([])
     const [searchTitle, setSearchTitle] = useState("");
     const [show, setShow] = useState(false);
+    const [isDelete, setIsDelete] = useState(null);
 
     const handleClose = () => setShow(false);
 
     useEffect(() => {
         retrieveTutorials();
-    }, [tutorial])
+    }, [tutorial, isDelete])
+
 
     const retrieveTutorials = () => {
         TutorialService.geAll()
@@ -34,6 +36,7 @@ const TutorialsList = () => {
         const searchTitle = e.target.value;
         setSearchTitle(searchTitle);
     };
+
 
     const findByTitle = () => {
         TutorialService.findByTitle(searchTitle)
@@ -50,6 +53,8 @@ const TutorialsList = () => {
         setTutorial(t)
         setShow(true)
     }
+
+
     const updatePublished = (t) => {
         let arrarcopi = { ...t }
         let publi = arrarcopi.published
@@ -71,6 +76,7 @@ const TutorialsList = () => {
 
     }
 
+
     const updateTutorial = () => {
         TutorialService.updateTutorial(tutorial.id, tutorial)
             .then(res => {
@@ -81,15 +87,28 @@ const TutorialsList = () => {
         handleClose()
     }
 
+
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setTutorial({ ...tutorial, [name]: value })
     }
 
+
+
     const handleDelete = (id) => {
+        setIsDelete(false)
         TutorialService.deleteTutorial(id)
-            .then(res => setTutorial(res.data))
+            .then(res => {
+                if (res.status) {
+                    console.log("si es 200")
+                    setIsDelete(true)
+
+                }
+            })
             .catch(err => console.error(err))
+    }
+    const on = (e) => {
+        console.log(e)
     }
 
     return (
@@ -147,9 +166,13 @@ const TutorialsList = () => {
                                             onClick={() => handleDelete(t.id)}
                                         >Delete</button>
                                         <button
-                                            className="m-1  btn btn-outline-secondary"
+
+                                            className=" m-2 btn btn-outline-secondary"
+                                            type="button"
+
                                             onClick={() => { updatePublished(t) }}
-                                        >  {t.published ? "inpublished" : "published"}</button>
+
+                                        >   {t.published ? "unPublish" : "published"} </button>
 
                                     </td>
                                 </tr>

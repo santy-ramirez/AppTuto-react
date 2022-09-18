@@ -8,16 +8,16 @@ const ModalUdate = ({ show, handleClose, handleInputChange, tutorial, updateTuto
         <div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Update Tutorial</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Title</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
-                                placeholder="name@example.com"
+                                placeholder="Enter to Title"
                                 autoFocus
                                 onChange={handleInputChange}
                                 value={tutorial.title}
@@ -27,11 +27,11 @@ const ModalUdate = ({ show, handleClose, handleInputChange, tutorial, updateTuto
                             className="mb-3"
                             controlId="exampleForm.ControlTextarea1"
                         >
-                            <Form.Label>Example textarea</Form.Label>
+                            <Form.Label>Description</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="description"
-                                placeholder="name@example.com"
+                                placeholder="Enter to description"
                                 autoFocus
                                 onChange={handleInputChange}
                                 value={tutorial.description}
